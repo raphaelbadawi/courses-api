@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Load .env variables
 dotenv.config({
-  path: './config/config.env'
+  path: './config/config.env',
 });
 
 // Connect to databse
@@ -20,6 +20,7 @@ connectDB();
 
 // Route files
 const bootcamps = require('./routes/bootcamps');
+const courses = require('./routes/courses');
 
 // Mount middlewares
 if (process.env.NODE_ENV === 'development') {
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/courses', courses);
 app.use(errorHandler);
 
 // Start server
